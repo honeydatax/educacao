@@ -12,6 +12,7 @@ texto *entrada();
 rotina escrever(texto *txt);
 rotina escrevern(numero n);
 numero entradan(texto *txt);
+rotina localiza(inteiro x,inteiro y);
 
 rotina escrever(texto *txt){
 	printf("%s\n",txt);
@@ -35,4 +36,8 @@ texto *entrada(){
 
 numero entradan(texto *txt){
 	return atof(txt);
+}
+
+rotina localiza(inteiro x,inteiro y){
+	printf("\e[%d;%df",y+1,x+1);
 }
