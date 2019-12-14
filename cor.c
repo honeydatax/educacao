@@ -8,7 +8,7 @@ inteiro comecar(){
 	localiza(1,1);
 	papel(branco);
 	tinta(preto);
-	for(i;i<16;i++){
+	entre(i=0;i<16;i++){
 		localiza(i,i);
 		escrever("ola mundo.!");
 	}
