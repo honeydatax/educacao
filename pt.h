@@ -10,6 +10,7 @@ texto texto_entrada[81];
 texto *entrada();
 rotina escrever(texto *txt);
 rotina escrevern(numero n);
+numero entradan(texto *txt);
 
 rotina escrever(texto *txt){
 	printf("%s\n",txt);
@@ -29,4 +30,8 @@ texto *entrada(){
 	t=fgets(texto_entrada,79,stdin);
 	return t;
 
+}
+
+numero entradan(texto *txt){
+	return atof(txt);
 }
