@@ -5,6 +5,7 @@
 #define texto char
 #define inteiro int
 #define numero float
+#define entre for
 texto texto_entrada[81];
 
 texto *entrada();
