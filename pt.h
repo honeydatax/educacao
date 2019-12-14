@@ -6,6 +6,9 @@
 #define inteiro int
 #define numero float
 #define entre for
+#define ficheiro FILE
+texto LER[]="r+";
+texto ESCREVER[]="w+";
 texto texto_entrada[81];
 inteiro cor_papel=0;
 inteiro cor_tinta=7;
@@ -24,9 +27,16 @@ rotina escrever(texto *txt);
 rotina escrevern(numero n);
 numero entradan(texto *txt);
 rotina localiza(inteiro x,inteiro y);
+rotina tinta(inteiro cor);
+rotina papel(inteiro cor);
+ficheiro *abrir(texto *files,texto *alue);
+inteiro fechar(ficheiro *files);
+rotina gravar(ficheiro *files,texto *txt);
+texto *ler(ficheiro *files);
+
 
 rotina escrever(texto *txt){
-	printf("%s\n",txt);
+	if (txt!=NULL)printf("%s\n",txt);
 }
 
 
@@ -62,4 +72,22 @@ rotina tinta(inteiro cor){
 	cor_tinta=cor;
 	printf("\e[0;%d;%dm ",cor_tinta+30,cor_papel+40);
 }
+
+ficheiro *abrir(texto *files,texto *value){
+	return fopen(files,value);
+}
+
+inteiro fechar(ficheiro *files){
+	return fclose(files);
+}
+
+rotina gravar(ficheiro *files,texto *txt){
+	fprintf(files,"%s\n",txt);
+}
+
+
+texto *ler(ficheiro *files){
+	return fgets(texto_entrada,78,files);
+}
+
 
