@@ -17,3 +17,7 @@ rotina escrever(texto *txt){
 rotina escrevern(numero n){
 	printf("%f\n",n);
 }
+
+rotina apagar(){
+	puts("\033c");
+}
