@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #define comecar main
 #define rotina void
 #define texto char
@@ -33,6 +34,8 @@ ficheiro *abrir(texto *files,texto *alue);
 inteiro fechar(ficheiro *files);
 rotina gravar(ficheiro *files,texto *txt);
 texto *ler(ficheiro *files);
+texto copia(texto *destino,texto *origem);
+texto acrescentar(texto *destino,texto *origem);
 
 
 rotina escrever(texto *txt){
@@ -90,4 +93,12 @@ texto *ler(ficheiro *files){
 	return fgets(texto_entrada,78,files);
 }
 
+
+texto copia(texto *destino,texto *origem){
+	strcpy(destino,origem);
+}
+
+texto acrescentar(texto *destino,texto *origem){
+	strcat(destino,origem);
+}
 
