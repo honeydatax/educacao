@@ -34,9 +34,10 @@ ficheiro *abrir(texto *files,texto *alue);
 inteiro fechar(ficheiro *files);
 rotina gravar(ficheiro *files,texto *txt);
 texto *ler(ficheiro *files);
-texto copia(texto *destino,texto *origem);
-texto acrescentar(texto *destino,texto *origem);
-
+texto *copia(texto *destino,texto *origem);
+texto *acrescentar(texto *destino,texto *origem);
+texto *encher(texto *destino,texto t,inteiro tamanho);
+texto *espaco(texto *destino,inteiro tamanho);
 
 rotina escrever(texto *txt){
 	if (txt!=NULL)printf("%s\n",txt);
@@ -94,11 +95,21 @@ texto *ler(ficheiro *files){
 }
 
 
-texto copia(texto *destino,texto *origem){
-	strcpy(destino,origem);
+texto *copia(texto *destino,texto *origem){
+	return strcpy(destino,origem);
 }
 
-texto acrescentar(texto *destino,texto *origem){
-	strcat(destino,origem);
+texto *acrescentar(texto *destino,texto *origem){
+	return strcat(destino,origem);
 }
 
+texto *encher(texto *destino,texto t,inteiro tamanho){
+	
+	memset(destino,t,tamanho);
+	destino[tamanho]=0;
+	return destino;
+}
+
+texto *espaco(texto *destino,inteiro tamanho){
+	return encher(destino,32,tamanho);
+}
