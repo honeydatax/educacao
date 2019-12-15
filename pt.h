@@ -38,6 +38,7 @@ texto *copia(texto *destino,texto *origem);
 texto *acrescentar(texto *destino,texto *origem);
 texto *encher(texto *destino,texto t,inteiro tamanho);
 texto *espaco(texto *destino,inteiro tamanho);
+texto *em(texto *destino,texto *procurar);
 
 rotina escrever(texto *txt){
 	if (txt!=NULL)printf("%s\n",txt);
@@ -104,7 +105,7 @@ texto *acrescentar(texto *destino,texto *origem){
 }
 
 texto *encher(texto *destino,texto t,inteiro tamanho){
-	
+
 	memset(destino,t,tamanho);
 	destino[tamanho]=0;
 	return destino;
@@ -112,4 +113,9 @@ texto *encher(texto *destino,texto t,inteiro tamanho){
 
 texto *espaco(texto *destino,inteiro tamanho){
 	return encher(destino,32,tamanho);
+}
+
+texto *em(texto *destino,texto *procurar){
+    destino=strstr(destino,procurar);
+    return destino;
 }
