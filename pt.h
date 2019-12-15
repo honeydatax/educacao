@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+
+
 #define comecar main
 #define rotina void
 #define texto char
@@ -8,6 +11,11 @@
 #define numero float
 #define entre for
 #define ficheiro FILE
+#define horas time
+#define aleatorio srandom
+#define longo long
+#define vazio NULL
+
 texto LER[]="r+";
 texto ESCREVER[]="w+";
 texto texto_entrada[81];
@@ -22,6 +30,7 @@ inteiro rosa=5;
 inteiro magenta=6;
 inteiro cinza=7;
 inteiro branco=7;
+texto terminado=0;
 
 texto *entrada();
 rotina escrever(texto *txt);
@@ -118,4 +127,12 @@ texto *espaco(texto *destino,inteiro tamanho){
 texto *em(texto *destino,texto *procurar){
     destino=strstr(destino,procurar);
     return destino;
+}
+
+inteiro loto(inteiro n){
+    longo l;
+    longo ll=RAND_MAX/n;
+    l=random();;
+    l= l / ll;
+    return (inteiro) l;
 }
