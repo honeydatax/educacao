@@ -2,6 +2,7 @@
 #include <cairo.h>
 #include <gtk/gtk.h>
 
+#define formato printf
 #define funcao gboolean
 #define falso FALSE
 #define verdadeiro TRUE
@@ -17,10 +18,12 @@
 #define fim gtk_main_quit
 #define preservar cairo_stroke_preserve
 #define retornar return
+#define erato GdkEventButton
 rotina (*saindo) ();
 funcao (*desenhando) (mecanismo *,desenho *,pontos);
 funcao (*orelogio) (pontos);
 funcao (*otecla) (mecanismo *,eventos *, pontos);
+funcao (*orato) (mecanismo *,erato *, pontos);
 
 rotina iniciar();
 
@@ -65,6 +68,9 @@ rotina iniciar()
     g_signal_connect (window, "key_press_event",
                       G_CALLBACK (otecla), NULL);
 
+
+    g_signal_connect (window, "button-press-event",
+                     G_CALLBACK (orato), NULL);
 
     exitcode=g_timeout_add(gu1,orelogio,NULL);
 

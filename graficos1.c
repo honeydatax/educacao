@@ -5,6 +5,7 @@ numero y=0.00;
 funcao desenhar(mecanismo *giringonca,desenho *desenho1,pontos apontador1);
 funcao relogio(pontos apontador1);
 funcao tecla(mecanismo *geringoca,eventos *evento1, pontos apontador1);
+funcao rato(mecanismo *geringoca,erato *evento1, pontos apontador1);
 rotina saida();
 
 inteiro comecar(){
@@ -12,6 +13,7 @@ inteiro comecar(){
     titulos=titulo1;
     orelogio=relogio;
     otecla=tecla;
+    orato=rato;
     desenhando=desenhar;
     saindo=saida;
     iniciar();
@@ -49,6 +51,14 @@ funcao relogio(pontos apontador1){
 
 
 funcao tecla(mecanismo *geringoca,eventos *evento1, pontos apontador1){
-    printf("tecla primida,%c\n",evento1->primida);
+    formato("tecla primida,%c\n",evento1->primida);
     retornar falso;
+}
+
+
+funcao rato(mecanismo *geringoca,erato *evento1, pontos apontador1){
+    inteiro x1=evento1->x;
+    inteiro y1=evento1->y;
+formato("rato primida x y ,%d,%d\n",x1,y1);
+    retornar verdadeiro;
 }
