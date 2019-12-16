@@ -5,7 +5,7 @@
 #define funcao gboolean
 #define falso FALSE
 #define verdadeiro TRUE
-#define primida events->keyval
+#define primida keyval
 #define eventos GdkEventKey
 #define pontos gpointer
 #define mecanismo GtkWidget
@@ -20,6 +20,7 @@
 rotina (*saindo) ();
 funcao (*desenhando) (mecanismo *,desenho *,pontos);
 funcao (*orelogio) (pontos);
+funcao (*otecla) (mecanismo *,eventos *, pontos);
 
 rotina iniciar();
 
@@ -60,6 +61,10 @@ rotina iniciar()
 
     g_signal_connect (G_OBJECT(esquema), "draw",
                      G_CALLBACK (desenhando), NULL);
+
+    g_signal_connect (window, "key_press_event",
+                      G_CALLBACK (otecla), NULL);
+
 
     exitcode=g_timeout_add(gu1,orelogio,NULL);
 
