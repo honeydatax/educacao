@@ -19,6 +19,7 @@
 #define retornar return
 rotina (*saindo) ();
 funcao (*desenhando) (mecanismo *,desenho *,pontos);
+funcao (*orelogio) (pontos);
 
 rotina iniciar();
 
@@ -28,6 +29,8 @@ GtkWidget *window;
 GtkWidget *esquema;
 GtkWidget *widgets;
 GtkStyleContext *context;
+guint gu1=100;
+gint exitcode=0;
 int largura=640;
 int altura=320;
 texto titulo[]="titulo";
@@ -58,12 +61,12 @@ rotina iniciar()
     g_signal_connect (G_OBJECT(esquema), "draw",
                      G_CALLBACK (desenhando), NULL);
 
-    //exitcode=g_timeout_add(gu1,relogio,NULL);
+    exitcode=g_timeout_add(gu1,orelogio,NULL);
 
 
     gtk_main();
 
-    //g_source_remove(exitcode);
+    g_source_remove(exitcode);
 
 }
 
