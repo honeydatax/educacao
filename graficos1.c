@@ -4,13 +4,14 @@ numero x=0.00;
 numero y=0.00;
 funcao desenhar(mecanismo *giringonca,desenho *desenho1,pontos apontador1);
 funcao relogio(pontos apontador1);
-funcao tecla(mecanismo geringoca,eventos evento1, pontos apontador1);
+funcao tecla(mecanismo *geringoca,eventos *evento1, pontos apontador1);
 rotina saida();
 
 inteiro comecar(){
     texto titulo1[]="ola mundo";
     titulos=titulo1;
     orelogio=relogio;
+    otecla=tecla;
     desenhando=desenhar;
     saindo=saida;
     iniciar();
@@ -43,4 +44,11 @@ funcao relogio(pontos apontador1){
         y=x;
     }
     redesenhar(esquema,0.00,0.00,largura,altura);
+    retornar verdadeiro;
+}
+
+
+funcao tecla(mecanismo *geringoca,eventos *evento1, pontos apontador1){
+    printf("tecla primida,%c\n",evento1->primida);
+    retornar falso;
 }
