@@ -1,0 +1,7 @@
+sudo apt-get install gcc
+sudo apt-get install g++
+sudo apt-get install gnome
+sudo apt-get install SDL
+sudo apt-get install cairo
+sudo apt-get install geany
+sudo apt-get install codeblocks
