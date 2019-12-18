@@ -1,0 +1,11 @@
+// a tradução devera se efectuar com a palavra chave #DEFINE escrito em maisculas 
+//exemplos a por no pt.h novo nome em portugues em seguida a palavra chave que vai executar:
+
+
+#DEFINE se if
+#DEFINE ate_que while
+#DEFINE fazer do
+#DEFINE precisao double
+
+
+
