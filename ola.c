@@ -2,5 +2,5 @@
 
 
 inteiro comecar(){
-	escrever("ola mundo!");
+	escrever((texto*)"ola mundo!");
 	}

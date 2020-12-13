@@ -16,6 +16,133 @@
 #define longo long
 #define vazio NULL
 
+class cadeia{
+public :
+char *txt=NULL;
+bool b;
+cadeia(){
+}
+void relatorio(){
+	printf("%s\n",txt);
+}
+
+
+cadeia& operator =(char *s){
+	char *ss;
+	ss=s+strlen(txt)+2;
+	if(ss[0]=='!')free(txt);
+	txt=s;
+	return *this;
+}
+cadeia& operator +(char *s){
+	char *sss;
+	char *ss;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+		strcpy(txt,sss);
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+cadeia& operator +=(char *s){
+	char *sss;
+	char *ss;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+		strcpy(txt,sss);
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+bool& operator ==(cadeia s){
+	b=(bool)(0==1);
+	if(strcmp(txt,s.txt)==0)b=(bool)(0==0);
+	return b;
+}
+bool& operator !=(cadeia s){
+	b=(bool)(0==1);
+	if(strcmp(txt,s.txt)!=0)b=(bool)(0==0);
+	return b;
+}
+bool& operator >(cadeia s){
+	b=(bool)(0==1);
+	if(strcmp(txt,s.txt)>0)b=(bool)(0==0);
+	return b;
+}
+bool& operator <(cadeia s){
+	b=(bool)(0==1);
+	if(strcmp(txt,s.txt)<0)b=(bool)(0==0);
+	return b;
+}
+cadeia &operator !(){
+	char *sss;
+	char *ss;
+	char *s;
+	int i=0;
+	size_t size=strlen(txt)+4;
+	sss=txt;
+	s=txt;
+	txt=(char*)(malloc(size));
+	for(i=0;i<strlen(s);i++)txt[i]=s[strlen(s)-i-1];
+	txt[strlen(s)]=0;
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	ss=s+strlen(s)+2;
+	if(ss[0]=='!')free(s);
+	return *this;
+}
+cadeia& operator <<(char *s){
+	char *sss;
+	char *ss;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+		strcpy(txt,sss);
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+cadeia& operator >>(char *s){
+	char *sss;
+	char *ss;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+		strcpy(txt,sss);
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+};
+
+
+
 texto LER[]="r+";
 texto ESCREVER[]="w+";
 texto texto_entrada[81];
@@ -136,3 +263,4 @@ inteiro loto(inteiro n){
     l= l / ll;
     return (inteiro) l;
 }
+
