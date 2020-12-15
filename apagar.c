@@ -3,5 +3,5 @@
 
 inteiro comecar(){
 	apagar();
-	escrever("ola mundo!");
+	escrever((texto*)"ola mundo!");
 	}

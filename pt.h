@@ -21,19 +21,74 @@ public :
 char *txt=NULL;
 bool b;
 cadeia(){
+txt=(char*)(malloc(8));
+txt[1]='!';
+txt[0]=0;
 }
 void relatorio(){
 	printf("%s\n",txt);
 }
 
+void encher (char *s,int tsides){
+	char *sss;
+	char *ss;
+	int ttsides=tsides;
+	int i=0;
+	if(tsides<0)ttsides=1;
+	size_t size=strlen(s)*tsides+4;
+	sss=txt;
+
+	ss=txt+strlen(txt)+2;
+
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcpy(txt,"");
+	for(i=0;i<tsides-1;i++)strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+}
+void espaco (int tsides){
+	encher ((char*)" ",tsides);
+}
 
 cadeia& operator =(char *s){
+	char *sss;
 	char *ss;
-	ss=s+strlen(txt)+2;
-	if(ss[0]=='!')free(txt);
-	txt=s;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
 	return *this;
 }
+cadeia& operator =(cadeia& sa){
+	char *sss;
+	char *ss;
+	char *s;
+	s=sa.txt;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+
 cadeia& operator +(char *s){
 	char *sss;
 	char *ss;
@@ -51,6 +106,26 @@ cadeia& operator +(char *s){
 	ss[0]='!';
 	return *this;
 }
+cadeia& operator +(cadeia& sa){
+	char *sss;
+	char *ss;
+	char *s;
+	s=sa.txt;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+		strcpy(txt,sss);
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+
 cadeia& operator +=(char *s){
 	char *sss;
 	char *ss;
@@ -68,6 +143,26 @@ cadeia& operator +=(char *s){
 	ss[0]='!';
 	return *this;
 }
+cadeia& operator +=(cadeia& sa){
+	char *sss;
+	char *ss;
+	char *s;
+	s=sa.txt;
+	size_t size=strlen(txt)+4+strlen(s)+4;
+	sss=txt;
+	ss=txt+strlen(txt)+2;
+	if(txt==NULL || ss[0]!='!'){
+		txt=(char*)(malloc(size));
+		strcpy(txt,sss);
+	}else{
+		txt=(char*)(realloc(txt,size));		
+	}
+	strcat(txt,s);
+	ss=txt+strlen(txt)+2;
+	ss[0]='!';
+	return *this;
+}
+
 bool& operator ==(cadeia s){
 	b=(bool)(0==1);
 	if(strcmp(txt,s.txt)==0)b=(bool)(0==0);
@@ -172,8 +267,6 @@ rotina gravar(ficheiro *files,texto *txt);
 texto *ler(ficheiro *files);
 texto *copia(texto *destino,texto *origem);
 texto *acrescentar(texto *destino,texto *origem);
-texto *encher(texto *destino,texto t,inteiro tamanho);
-texto *espaco(texto *destino,inteiro tamanho);
 texto *em(texto *destino,texto *procurar);
 
 rotina escrever(texto *txt){
@@ -191,8 +284,9 @@ rotina apagar(){
 
 texto *entrada(){
 	texto *t;
+	t=texto_entrada;
 	t=fgets(texto_entrada,79,stdin);
-	return t;
+	return texto_entrada;
 
 }
 
@@ -238,17 +332,6 @@ texto *copia(texto *destino,texto *origem){
 
 texto *acrescentar(texto *destino,texto *origem){
 	return strcat(destino,origem);
-}
-
-texto *encher(texto *destino,texto t,inteiro tamanho){
-
-	memset(destino,t,tamanho);
-	destino[tamanho]=0;
-	return destino;
-}
-
-texto *espaco(texto *destino,inteiro tamanho){
-	return encher(destino,32,tamanho);
 }
 
 texto *em(texto *destino,texto *procurar){

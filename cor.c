@@ -6,11 +6,11 @@ inteiro comecar(){
 	inteiro i;
 	apagar();
 	localiza(1,1);
-	papel(branco);
-	tinta(preto);
+	papel(azul);
+	tinta(branco);
 	entre(i=0;i<16;i++){
 		localiza(i,i);
-		escrever("ola mundo.!");
+		escrever((texto*)"ola mundo.!");
 	}
 	
 }

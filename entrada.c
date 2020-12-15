@@ -2,10 +2,10 @@
 
 
 inteiro comecar(){
-	texto *texto1;
+	cadeia texto1;
 	apagar();
-	escrever("escreva o seu nome?");
-	texto1=entrada();
-	escrever("o texto que digitou foi:");
-	escrever(texto1);
+	escrever((texto*)"escreva o seu nome?");
+	texto1=(texto*)entrada();
+	escrever((texto*)"o texto que digitou foi:");
+	escrever((texto*)texto1.txt);
 	}
