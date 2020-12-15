@@ -8,16 +8,16 @@ inteiro comecar(){
 	ficheiro *ficheiro1;
 	apagar();
 	localiza(1,1);
-	papel(branco);
-	tinta(preto);
+	papel(azul);
+	tinta(branco);
 	
-	ficheiro1=abrir("meu.txt",ESCREVER);
-		gravar(ficheiro1,"ola mundo.!");
+	ficheiro1=abrir((texto*)"meu.txt",ESCREVER);
+		gravar(ficheiro1,(texto*)"ola mundo.!");
 	fechar(ficheiro1);
 
-	ficheiro1=abrir("meu.txt",LER);
+	ficheiro1=abrir((texto*)"meu.txt",LER);
 		txt1=ler(ficheiro1);
-		escrever(txt1);
+		escrever((texto*)txt1);
 	fechar(ficheiro1);
 
 		

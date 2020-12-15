@@ -7,6 +7,6 @@ inteiro comecar(){
 	apagar();
 	entre(i=0;i<16;i++){
 		localiza(i*2,i);
-		escrever("ola mundo.!");
+		escrever((texto*)"ola mundo.!");
 	}
 }

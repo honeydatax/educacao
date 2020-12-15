@@ -3,16 +3,15 @@
 
 inteiro comecar(){
 	numero n=0;
+	cadeia txt1;
+	cadeia txt2;
 	inteiro tamanho=100;
 	inteiro i;
-	texto txt1[tamanho];
-	texto txt2[tamanho];
 	apagar();
-
-    copia(txt1,"hello world !.");
-    copia(txt2,"world");
+	txt1=(texto*)"ola mundo.";
+	txt2=(texto*)"mundo";
 	localiza(1,1);
-	escrever(em(txt1,txt2));
+	escrever(em((texto*)txt1.txt,(texto*)txt2.txt));
 
 
 }
